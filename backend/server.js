@@ -30,22 +30,22 @@ app.use(express.urlencoded({ extended: true })); // for form data
 
 app.use("/api/user/", UserRoutes);
 
-app.use((err, req, res, next) => {
-  const status = err.status || 500;
-  const message = err.message || "Something went wrong";
-  return res.status(status).json({
-    success: false,
-    status,
-    message,
-  });
-});
+// app.use((err, req, res, next) => {
+//   const status = err.status || 500;
+//   const message = err.message || "Something went wrong";
+//   return res.status(status).json({
+//     success: false,
+//     status,
+//     message,
+//   });
+// });
 
 app.use("/api/food", FoodRoutes);
 app.use("/api/meals", MealRoutes);
 
 app.get("/", async (req, res) => {
   res.status(200).json({
-    message: "Hello developers from GFG",
+    message: "Hello, from Team!!",
   });
 });
 
@@ -59,6 +59,15 @@ const connectDB = () => {
       console.error(err);
     });
 };
+app.use((err, req, res, next) => {
+  const status = err.status || 500;
+  const message = err.message || "Something went wrong";
+  return res.status(status).json({
+    success: false,
+    status,
+    message,
+  });
+});
 
 const startServer = async () => {
   try {
