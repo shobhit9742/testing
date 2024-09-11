@@ -49,7 +49,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://testing-435o.onrender.com",
+  baseURL: "https://testing-435o.onrender.com/api",
 });
 
 export const UserSignUp = async (data) => API.post("/user/signup", data);
@@ -73,7 +73,7 @@ export const addWorkout = async (token, data) =>
 export const fetchData = async () => {
   try {
     const response = await axios.get(
-      "https://union-ubuntu-046.onrender.com/foods"
+      "https://testing-435o.onrender.com/api/food"
     );
     return response.data;
   } catch (error) {
